@@ -195,7 +195,18 @@ declare global {
     readonly innerRadius: number
   }
 
-  interface ShadowEffect {
+  interface DropShadowEffect {
+    readonly type: "DROP_SHADOW" | "INNER_SHADOW"
+    readonly color: RGBA
+    readonly offset: Vector
+    readonly radius: number
+    readonly spread?: number
+    readonly visible: boolean
+    readonly blendMode: BlendMode
+    readonly showShadowBehindNode?: boolean
+  }
+
+  interface InnerShadowEffect {
     readonly type: "DROP_SHADOW" | "INNER_SHADOW"
     readonly color: RGBA
     readonly offset: Vector
@@ -211,7 +222,7 @@ declare global {
     readonly visible: boolean
   }
 
-  type Effect = ShadowEffect | BlurEffect
+  type Effect = DropShadowEffect | InnerShadowEffect | BlurEffect
 
   type ConstraintType = "MIN" | "CENTER" | "MAX" | "STRETCH" | "SCALE"
 
